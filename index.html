@@ -5,152 +5,316 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>闪电狗AI快聘 - 蓝领求职，工厂直签，告别黑中介</title>
   <meta name="description" content="闪电狗AI快聘是江苏帮聘科技有限公司旗下蓝领招聘平台，工厂直签零差价，AI智能匹配，让求职者闪电入职，告别黑中介和虚假信息。">
-  <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="images/logo.png">
+
+  <!-- 关键 CSS 内联：首屏渲染所需的最小样式 -->
+  <style>
+    :root{--primary:#FFB800;--primary-dark:#E5A600;--primary-light:#FFF8E6;--dark:#1a1a1a;--dark-2:#111;--gray-900:#111827;--gray-800:#1f2937;--gray-700:#374151;--gray-600:#4b5563;--gray-500:#6b7280;--gray-400:#9ca3af;--gray-300:#d1d5db;--gray-200:#e5e7eb;--gray-100:#f3f4f6;--gray-50:#f9fafb;--white:#fff;--gradient-1:linear-gradient(135deg,#FFB800 0%,#FF8C00 100%);--shadow-sm:0 1px 2px rgba(0,0,0,.05);--radius:12px;--radius-lg:20px;--transition:all .3s cubic-bezier(.4,0,.2,1)}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--gray-800);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit;transition:var(--transition)}
+    img{max-width:100%;display:block}
+    ul{list-style:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.06);transition:var(--transition)}
+    .nav-logo{display:flex;align-items:center;gap:10px;font-size:1.3rem;font-weight:700;color:var(--dark)}
+    .nav-logo .logo-img{width:40px;height:40px;border-radius:10px;object-fit:cover}
+    .nav-links{display:flex;align-items:center;gap:36px}
+    .nav-links a{font-size:.95rem;font-weight:500;color:var(--gray-600);position:relative;padding:4px 0}
+    .nav-links a:hover,.nav-links a.active{color:var(--dark)}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--primary);border-radius:1px;transition:var(--transition)}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .nav-toggle span{width:24px;height:2px;background:var(--gray-800);border-radius:2px;transition:var(--transition)}
+    .hero{min-height:100vh;display:flex;align-items:center;padding-top:72px;position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:var(--dark);z-index:-2}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(255,184,0,.12) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(255,140,0,.08) 0%,transparent 50%),radial-gradient(circle at 60% 80%,rgba(255,184,0,.06) 0%,transparent 50%)}
+    .hero .container{display:flex;align-items:center;gap:60px}
+    .hero-content{flex:1;color:var(--white)}
+    .hero h1{font-size:3.8rem;font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:24px}
+    .hero h1 .highlight{background:linear-gradient(135deg,#FFB800,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:1.2rem;line-height:1.7;color:rgba(255,255,255,.7);max-width:520px;margin-bottom:40px}
+  </style>
+
+  <!-- 非关键 CSS 异步加载 -->
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 </head>
 <body>
 
   <!-- 导航栏 -->
   <nav class="navbar" id="navbar">
-    <a href="index.html" class="nav-logo">
-      <img src="images/logo.png" alt="闪电狗" class="logo-img">
+    <a href="#home" class="nav-logo">
+      <img src="images/logo.png" alt="闪电狗" class="logo-img" width="40" height="40">
       闪电狗AI快聘
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="index.html" class="active">首页</a>
-      <a href="about.html">关于我们</a>
-      <a href="contact.html">联系我们</a>
+      <a href="#home" class="active" data-section="home">首页</a>
+      <a href="#about" data-section="about">关于我们</a>
+      <a href="#contact" data-section="contact">联系我们</a>
     </div>
-    <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+    <div class="nav-toggle" id="navToggle">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </nav>
 
-  <!-- Hero 区域 -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="dot"></span>
-          工厂直签 · 零中介费 · AI智能匹配
-        </div>
-        <h1>
-          找工作，不被坑<br>
-          <span class="highlight">闪电入职靠谱厂</span>
-        </h1>
-        <p>
-          闪电狗AI快聘直接对接优质工厂源头，彻底剔除黑中介和黄牛，
-          用AI技术为蓝领求职者匹配最合适的岗位，薪资真实、入职闪电。
-        </p>
-        <div class="hero-actions">
-          <a href="about.html" class="btn btn-primary">了解我们的故事 →</a>
-          <a href="contact.html" class="btn btn-outline">联系我们</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-card" style="height: auto; padding: 28px 32px; gap: 0;">
-          <div class="hero-card-header" style="margin-bottom: 28px;">
-            <div class="hero-card-icon">⚡</div>
-            <div>
-              <div class="hero-card-title">平台数据概览</div>
-              <div class="hero-card-subtitle">持续增长中</div>
-            </div>
+  <main>
+
+    <!-- ========== 首页：Hero ========== -->
+    <section id="home" class="hero">
+      <div class="hero-bg"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            工厂直签 · 零中介费 · AI智能匹配
           </div>
-          <div class="hero-card-stats" style="gap: 12px;">
-            <div class="stat-item">
-              <span class="stat-number" style="font-size: 2rem;">1000+</span>
-              <span class="stat-label">合作工厂</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" style="font-size: 2rem;">100%</span>
-              <span class="stat-label">真实岗位</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" style="font-size: 2rem;">24h</span>
-              <span class="stat-label">极速入职</span>
-            </div>
+          <h1>
+            找工作，不被坑<br>
+            <span class="highlight">闪电入职靠谱厂</span>
+          </h1>
+          <p>
+            闪电狗AI快聘直接对接优质工厂源头，彻底剔除黑中介和黄牛，
+            用AI技术为蓝领求职者匹配最合适的岗位，薪资真实、入职闪电。
+          </p>
+          <div class="hero-actions">
+            <a href="#about" class="btn btn-primary">了解我们的故事 →</a>
+            <a href="#contact" class="btn btn-outline">联系我们</a>
           </div>
         </div>
+        <div class="hero-visual">
+          <div class="hero-card" style="height:auto;padding:28px 32px;gap:0;">
+            <div class="hero-card-header" style="margin-bottom:28px;">
+              <div class="hero-card-icon">⚡</div>
+              <div>
+                <div class="hero-card-title">平台数据概览</div>
+                <div class="hero-card-subtitle">持续增长中</div>
+              </div>
+            </div>
+            <div class="hero-card-stats" style="gap:12px;">
+              <div class="stat-item">
+                <span class="stat-number" style="font-size:2rem;">1000+</span>
+                <span class="stat-label">合作工厂</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" style="font-size:2rem;">100%</span>
+                <span class="stat-label">真实岗位</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" style="font-size:2rem;">24h</span>
+                <span class="stat-label">极速入职</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 核心优势 -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">为什么选闪电狗</span>
-        <h2 class="section-title">让每一位打工人都能安心求职</h2>
-        <p class="section-desc">
-          我们深知外出务工者的不易，用技术手段从源头上杜绝黑中介、虚假信息，让求职变得简单、透明、安全
-        </p>
+    <!-- ========== 首页：核心优势 ========== -->
+    <section id="features" class="section" style="content-visibility:auto;contain-intrinsic-size:auto 800px;">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">为什么选闪电狗</span>
+          <h2 class="section-title">让每一位打工人都能安心求职</h2>
+          <p class="section-desc">
+            我们深知外出务工者的不易，用技术手段从源头上杜绝黑中介、虚假信息，让求职变得简单、透明、安全
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card fade-in">
+            <div class="feature-icon dark">🏭</div>
+            <h3>工厂直签 · 零差价</h3>
+            <p>平台直接对接优质工厂源头，彻底剔除中介和黄牛等中间环节，确保岗位薪资真实、无任何差价和隐形扣款</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon yellow">🤖</div>
+            <h3>AI智能匹配</h3>
+            <p>基于大数据与AI算法，根据求职者技能与意向客观匹配岗位。不以"返点高低"推荐，只以"岗位合适度"为核心指标</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon green">⚡</div>
+            <h3>闪电入职</h3>
+            <p>全流程在线化服务，从报名、面试到入职一站式保障，极大提升找工作效率，真正实现"闪电"入职</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon orange">🛡️</div>
+            <h3>信息真实透明</h3>
+            <p>每个岗位信息经过严格审核，工资待遇、工作环境、食宿条件全部真实展示，所见即所得</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon blue">📱</div>
+            <h3>全程在线服务</h3>
+            <p>汇集海量职位信息，在线报名、视频面试、电子合同，足不出户就能搞定工作</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon red">❤️</div>
+            <h3>懂你的平台</h3>
+            <p>创始团队出身农村和乡镇，深刻理解外出务工者的痛点和需求，做真正为打工人服务的平台</p>
+          </div>
+        </div>
       </div>
-      <div class="features-grid">
-        <div class="feature-card fade-in">
-          <div class="feature-icon dark">🏭</div>
-          <h3>工厂直签 · 零差价</h3>
-          <p>平台直接对接优质工厂源头，彻底剔除中介和黄牛等中间环节，确保岗位薪资真实、无任何差价和隐形扣款</p>
-        </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon yellow">🤖</div>
-          <h3>AI智能匹配</h3>
-          <p>基于大数据与AI算法，根据求职者技能与意向客观匹配岗位。不以"返点高低"推荐，只以"岗位合适度"为核心指标</p>
-        </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon green">⚡</div>
-          <h3>闪电入职</h3>
-          <p>全流程在线化服务，从报名、面试到入职一站式保障，极大提升找工作效率，真正实现"闪电"入职</p>
-        </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon orange">🛡️</div>
-          <h3>信息真实透明</h3>
-          <p>每个岗位信息经过严格审核，工资待遇、工作环境、食宿条件全部真实展示，所见即所得</p>
-        </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon blue">📱</div>
-          <h3>全程在线服务</h3>
-          <p>汇集海量职位信息，在线报名、视频面试、电子合同，足不出户就能搞定工作</p>
-        </div>
-        <div class="feature-card fade-in">
-          <div class="feature-icon red">❤️</div>
-          <h3>懂你的平台</h3>
-          <p>创始团队出身农村和乡镇，深刻理解外出务工者的痛点和需求，做真正为打工人服务的平台</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 数据统计 -->
-  <section class="section stats-section">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">数据说话</span>
-        <h2 class="section-title">用实力守护每一份信任</h2>
-        <p class="section-desc">我们正在改变蓝领求职市场，让更多人受益</p>
-      </div>
-      <div class="stats-grid">
-        <div class="stats-card fade-in">
-          <span class="number">1000+</span>
-          <span class="label">合作工厂</span>
-        </div>
-        <div class="stats-card fade-in">
-          <span class="number">100%</span>
-          <span class="label">岗位真实率</span>
-        </div>
-        <div class="stats-card fade-in">
-          <span class="number">24h</span>
-          <span class="label">平均入职速度</span>
-        </div>
-        <div class="stats-card fade-in">
-          <span class="number">0</span>
-          <span class="label">隐形收费</span>
+    <!-- ========== 关于我们：创业故事 ========== -->
+    <section id="about" class="section" style="content-visibility:auto;contain-intrinsic-size:auto 700px;">
+      <div class="container">
+        <div class="about-content fade-in">
+          <div class="about-text">
+            <span class="section-label">我们的故事</span>
+            <h2>从大厂到乡村<br>一份改变家乡的决心</h2>
+            <p>
+              闪电狗AI快聘的创始人是原京东研发总监，核心团队成员是一群出身农村和乡镇，曾先后任职于京东、快手、美团等互联网大厂的技术人。
+            </p>
+            <p>
+              一次回乡探亲，创始人与亲戚聊天时发现：身边很多朋友在外出务工时被坑，找工作的路上不仅有黑中介和黄牛的多环节抽水，各种虚假信息更是满天飞。不少人外出几个月不仅没赚到钱，反而被骗到身无分文。
+            </p>
+            <p>
+              这不是个例，而是千千万万蓝领务工者的真实困境。为改变家乡父老求职难的现状，团队毅然放弃大厂高薪，利用互联网技术回乡创业，致力于构建一个<strong>透明、公平</strong>的求职生态——这就是闪电狗AI快聘诞生的初心。
+            </p>
+          </div>
+          <div class="about-image">
+            <img src="images/logo.png" alt="闪电狗AI快聘" class="about-logo-img" loading="lazy" width="260" height="260">
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- ========== 关于我们：核心价值观 ========== -->
+    <section id="values" class="section stats-section" style="content-visibility:auto;contain-intrinsic-size:auto 600px;">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">核心价值观</span>
+          <h2 class="section-title">我们为什么而战</h2>
+          <p class="section-desc">每一行代码、每一个功能，都是为了让打工人少走弯路、不再被坑</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card fade-in">
+            <div class="feature-icon dark">🛡️</div>
+            <h3>透明公平</h3>
+            <p>坚决杜绝虚假信息，所有岗位经过严格审核。薪资透明、条件真实，让求职者看到的就是实际拿到的，构建真正公平的求职环境。</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon yellow">❤️</div>
+            <h3>以人为本</h3>
+            <p>我们自己就是从农村走出来的人，深知外出务工的不易。我们不做冷冰冰的平台，而是做一个真正懂打工人、为打工人着想的伙伴。</p>
+          </div>
+          <div class="feature-card fade-in">
+            <div class="feature-icon green">⚡</div>
+            <h3>技术向善</h3>
+            <p>把在大厂积累的技术能力用到最需要的地方。用AI和大数据让求职更高效，用技术的力量消除信息不对称，让科技真正服务于普通人。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 关于我们：发展历程 ========== -->
+    <section id="timeline" class="section" style="content-visibility:auto;contain-intrinsic-size:auto 800px;">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">发展历程</span>
+          <h2 class="section-title">从一个想法到改变行业</h2>
+          <p class="section-desc">每一步都走得坚定而有力</p>
+        </div>
+        <div class="timeline fade-in">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">缘起</div>
+              <div class="timeline-title">回乡发现痛点</div>
+              <div class="timeline-desc">创始人回乡探亲，发现身边大量亲友外出务工被黑中介坑骗，几个月辛苦不仅白费，甚至身无分文。这一幕深深触动了团队。</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">决定</div>
+              <div class="timeline-title">放弃大厂，回乡创业</div>
+              <div class="timeline-desc">原京东研发总监带领一批京东、快手、美团等大厂同事，毅然辞职回乡，成立江苏帮聘科技有限公司，立志用技术改变蓝领求职市场。</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">打磨</div>
+              <div class="timeline-title">闪电狗平台上线</div>
+              <div class="timeline-desc">深入走访数百家工厂，打通工厂直签通道，AI匹配引擎上线。第一批用户反馈："终于不用再被黄牛抽水了。"</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">成长</div>
+              <div class="timeline-title">规模化发展</div>
+              <div class="timeline-desc">合作工厂突破 1000 家，帮助大量求职者成功入职，平台口碑快速传播。从一个想法，到真正改变了一批人的命运。</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">未来</div>
+              <div class="timeline-title">让天下没有难找的蓝领工作</div>
+              <div class="timeline-desc">持续深耕蓝领就业市场，用技术赋能更多求职者和企业，构建全国最大的透明蓝领招聘生态。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 数据统计 ========== -->
+    <section id="stats" class="section stats-section" style="content-visibility:auto;contain-intrinsic-size:auto 500px;">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">数据说话</span>
+          <h2 class="section-title">用实力守护每一份信任</h2>
+          <p class="section-desc">我们正在改变蓝领求职市场，让更多人受益</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stats-card fade-in">
+            <span class="number">1000+</span>
+            <span class="label">合作工厂</span>
+          </div>
+          <div class="stats-card fade-in">
+            <span class="number">100%</span>
+            <span class="label">岗位真实率</span>
+          </div>
+          <div class="stats-card fade-in">
+            <span class="number">24h</span>
+            <span class="label">平均入职速度</span>
+          </div>
+          <div class="stats-card fade-in">
+            <span class="number">0</span>
+            <span class="label">隐形收费</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 联系我们 ========== -->
+    <section id="contact" class="section" style="content-visibility:auto;contain-intrinsic-size:auto 500px;">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">联系我们</span>
+          <h2 class="section-title">期待与您建立联系</h2>
+        </div>
+        <div class="contact-cards">
+          <div class="contact-card fade-in">
+            <div class="contact-card-icon dark">✉️</div>
+            <h4>电子邮箱</h4>
+            <p><a href="mailto:support@bangpin.online">support@bangpin.online</a></p>
+          </div>
+          <div class="contact-card fade-in">
+            <div class="contact-card-icon light">📍</div>
+            <h4>公司地址</h4>
+            <p>北京市朝阳区望京街9号<br>望京国际商业中心F座</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- 页脚 -->
   <footer class="footer">
@@ -158,7 +322,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="logo">
-            <img src="images/logo.png" alt="闪电狗" class="logo-img">
+            <img src="images/logo.png" alt="闪电狗" class="logo-img" width="36" height="36" loading="lazy">
             闪电狗AI快聘
           </div>
           <p>江苏帮聘科技有限公司旗下品牌。深耕蓝领就业市场，用互联网技术构建透明、公平的求职生态，让每一位打工人都能安心找到好工作。</p>
@@ -178,6 +342,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script defer src="js/main.js"></script>
 </body>
 </html>
