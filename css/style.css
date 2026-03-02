@@ -1252,6 +1252,120 @@ section[id] {
   line-height: 1.5;
 }
 
+/* --- FAQ 手风琴 --- */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.faq-item[open] {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.1);
+}
+
+.faq-question {
+  padding: 24px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--gray-400);
+  transition: var(--transition);
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.faq-item[open] .faq-question::after {
+  content: '−';
+  color: var(--primary-dark);
+}
+
+.faq-question:hover {
+  color: var(--primary-dark);
+}
+
+.faq-answer {
+  padding: 0 28px 24px;
+}
+
+.faq-answer p {
+  font-size: 1rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-answer ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 12px;
+}
+
+.faq-answer ul li {
+  font-size: 1rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.faq-answer ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.faq-answer a {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.faq-answer a:hover {
+  color: var(--primary);
+}
+
+/* --- 页脚 address 重置 --- */
+.footer-address {
+  font-style: normal;
+}
+
 /* --- 动画 --- */
 .fade-in {
   opacity: 0;
