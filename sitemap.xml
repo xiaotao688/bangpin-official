@@ -27,6 +27,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://official.bangpin.online/#credentials</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://official.bangpin.online/#stats</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

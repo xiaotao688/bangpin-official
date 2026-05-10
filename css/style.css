@@ -1252,6 +1252,142 @@ section[id] {
   line-height: 1.5;
 }
 
+/* --- 公司资质 · 权威认证 --- */
+.credentials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.credential-card {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: 0;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition);
+  margin: 0;
+}
+
+.credential-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.credential-image {
+  display: block;
+  position: relative;
+  background: var(--gray-50);
+  border-right: 1px solid var(--gray-100);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: zoom-in;
+}
+
+.credential-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 16px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.credential-image::after {
+  content: '🔍 点击查看大图';
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  background: rgba(26, 26, 26, 0.85);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 6px;
+  opacity: 0;
+  transition: var(--transition);
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+
+.credential-image:hover::after {
+  opacity: 1;
+}
+
+.credential-image:hover img {
+  transform: scale(1.03);
+}
+
+.credential-content {
+  padding: 36px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.credential-tag {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 12px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+}
+
+.credential-content h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 14px;
+  line-height: 1.35;
+}
+
+.credential-content p {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.credential-meta {
+  list-style: none;
+  padding: 16px 18px;
+  margin: 0;
+  background: var(--gray-50);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-100);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 20px;
+}
+
+.credential-meta li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.credential-meta li span {
+  color: var(--gray-500);
+  font-size: 0.75rem;
+}
+
+.credential-meta li strong {
+  color: var(--gray-900);
+  font-weight: 600;
+  word-break: break-all;
+}
+
 /* --- App 体验亮点 --- */
 .app-features-grid {
   display: grid;
@@ -1484,6 +1620,11 @@ section[id] {
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .app-features-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
+
+  .credential-card { grid-template-columns: 1fr; }
+  .credential-image { aspect-ratio: 16/10; border-right: none; border-bottom: 1px solid var(--gray-100); }
+  .credential-content { padding: 28px 24px; }
+  .credential-meta { grid-template-columns: 1fr; gap: 10px; }
   .process-grid { grid-template-columns: 1fr 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
 

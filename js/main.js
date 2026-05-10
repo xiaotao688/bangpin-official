@@ -48,6 +48,7 @@
   const sectionMap = {
     home: document.getElementById('home'),
     about: document.getElementById('about'),
+    credentials: document.getElementById('credentials'),
     download: document.getElementById('download'),
     faq: document.getElementById('faq'),
     contact: document.getElementById('contact'),
