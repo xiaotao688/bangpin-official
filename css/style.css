@@ -1507,6 +1507,63 @@ section[id] {
   color: var(--primary);
 }
 
+.brand-statement {
+  margin-top: 20px;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius);
+}
+
+.brand-statement h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 12px;
+}
+
+.brand-statement p {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.brand-statement-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brand-statement-links li {
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  padding-left: 16px;
+  position: relative;
+}
+
+.brand-statement-links li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.brand-statement-links a {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.brand-statement-links a:hover {
+  color: var(--primary);
+}
+
 /* --- App 体验亮点 --- */
 .app-features-grid {
   display: grid;
